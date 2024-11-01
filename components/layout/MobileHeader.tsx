@@ -1,24 +1,23 @@
-"use client";
+'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Sparkles } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Sparkles } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { User } from '@/types/type';
+import { useTelegram } from '@/providers/TelegramProvider';
 
 export function MobileHeader() {
-  const session1 = useSession();
+  const { telegram_user } = useTelegram();
   const { data: session } = useSession();
   const user = session?.user as User;
 
-  console.log('session', session)
-  console.log('session1', session1)
-
+  console.log('session', session);
 
   // Dummy data for when there's no user session
   const dummyUser: User = {
     id: '123',
     telegramId: '1234',
-    firstName: "Guest",
+    firstName: 'Guest',
     credits: 100,
     referralCode: 'some_code',
     createdAt: '',
@@ -33,11 +32,11 @@ export function MobileHeader() {
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8 border border-black">
             <AvatarImage
-              src={`https://api.dicebear.com/7.x/initials/svg?seed=${displayUser.firstName}`}
+              src={`https://api.dicebear.com/7.x/initials/svg?seed=${telegram_user?.first_name}`}
             />
-            <AvatarFallback>{displayUser.firstName[0]}</AvatarFallback>
+            <AvatarFallback>{telegram_user?.first_name?.[0]}</AvatarFallback>
           </Avatar>
-          <span className="font-medium">{displayUser?.telegramId}</span>
+          <span className="font-medium">{telegram_user?.username}</span>
         </div>
         <div className="flex items-center gap-2 text-sm font-bold">
           <Sparkles className="h-4 w-4" />
