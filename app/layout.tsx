@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/layout/Navbar";
+import { MobileHeader } from "@/components/layout/MobileHeader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import AppProvider from "@/providers/AppProvider";
@@ -37,8 +38,9 @@ export default function RootLayout({
           <Suspense>
             <AppProvider>
               <div className="aurora" />
+              <MobileHeader />
               <Navbar />
-              <main className="pt-16">{children}</main>
+              <main className="pt-16 md:pt-16">{children}</main>
               <Toaster />
             </AppProvider>
           </Suspense>

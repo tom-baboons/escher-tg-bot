@@ -23,18 +23,18 @@ export function GameCard({
   onAnswer,
 }: GameCardProps) {
   return (
-    <Card className="w-full max-w-md p-6 space-y-6 bg-white/80 backdrop-blur-sm border border-primary/20 shadow-lg">
-      <div className="flex justify-between items-center">
-        <span className="text-sm font-medium text-primary">
+    <Card className="w-full max-w-md p-6 space-y-6 bg-white rounded-none border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <div className="flex justify-between items-center text-center">
+        <span className="text-sm font-bold">
           Question {currentQuestion + 1}/{totalQuestions}
         </span>
-        <span className="flex items-center gap-2 text-primary">
+        <span className="flex items-center gap-2 font-bold">
           <Sparkles className="w-4 h-4" />
           Score: {score}
         </span>
       </div>
 
-      <div className="relative aspect-square w-full overflow-hidden rounded-lg ring-2 ring-primary/20">
+      <div className="relative aspect-square w-full overflow-hidden rounded-none border border-black">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentQuestion}
@@ -61,7 +61,7 @@ export function GameCard({
             key={option}
             onClick={() => onAnswer(option)}
             variant="outline"
-            className="h-auto py-4 hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:shadow-md"
+            className="h-auto py-4 rounded-none border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-medium"
           >
             {option}
           </Button>

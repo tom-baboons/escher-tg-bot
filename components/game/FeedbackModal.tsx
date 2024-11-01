@@ -27,7 +27,7 @@ export function FeedbackModal({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/40"
             onClick={onClose}
           />
           <motion.div
@@ -36,7 +36,7 @@ export function FeedbackModal({
             exit={{ opacity: 0, scale: 0.95 }}
             className="relative z-10 w-[90vw] max-w-md"
           >
-            <div className="bg-white rounded-lg shadow-xl p-8 border border-primary/20">
+            <div className="bg-white rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] p-8 border border-black">
               <div className="flex flex-col items-center text-center space-y-6">
                 <motion.div
                   initial={{ scale: 0.8 }}
@@ -54,7 +54,7 @@ export function FeedbackModal({
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-3xl font-bold text-gray-800"
+                  className="text-3xl font-black tracking-tight"
                 >
                   {isCorrect ? "Correct! 🎉" : "Not quite right"}
                 </motion.h2>
@@ -63,7 +63,7 @@ export function FeedbackModal({
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-lg text-muted-foreground"
+                  className="text-lg font-medium"
                 >
                   {isCorrect 
                     ? `That was indeed created with ${correctAnswer}!`
@@ -78,7 +78,7 @@ export function FeedbackModal({
                 >
                   <Button 
                     onClick={onClose}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 min-w-[140px] text-lg py-6"
+                    className="bg-black text-white hover:bg-black/90 rounded-none min-w-[140px] text-lg py-6 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[1px] hover:translate-y-[1px] transition-all font-medium"
                   >
                     Continue
                   </Button>
