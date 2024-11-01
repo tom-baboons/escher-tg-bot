@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { Trophy, Medal, Award } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { Award, Medal, Trophy } from "lucide-react";
 
 const leaderboardData = [
   { rank: 1, name: "Alex Chen", score: 950, games: 42 },
@@ -26,7 +26,9 @@ const getRankIcon = (rank: number) => {
     case 3:
       return <Award className="h-6 w-6 text-amber-600" />;
     default:
-      return <span className="text-lg font-bold text-muted-foreground">{rank}</span>;
+      return (
+        <span className="text-lg font-bold text-muted-foreground">{rank}</span>
+      );
   }
 };
 
@@ -37,10 +39,9 @@ export default function Leaderboard() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12 space-y-4"
-        >
+          className="text-center mb-12 space-y-4">
           <h1 className="text-4xl font-bold">
-            Global{' '}
+            Global{" "}
             <span className="bg-gradient-to-r from-primary to-primary/50 text-transparent bg-clip-text">
               Leaderboard
             </span>
@@ -53,8 +54,7 @@ export default function Leaderboard() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
+          transition={{ delay: 0.2 }}>
           <Card className="overflow-hidden border border-primary/20 shadow-lg shadow-primary/5">
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -73,8 +73,7 @@ export default function Leaderboard() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="border-b border-primary/10 hover:bg-primary/5 transition-colors"
-                    >
+                      className="border-b border-primary/10 hover:bg-primary/5 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center justify-center w-8">
                           {getRankIcon(player.rank)}

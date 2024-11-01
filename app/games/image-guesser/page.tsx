@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -6,8 +6,9 @@ import { GameCard } from '@/components/game/GameCard';
 import { GameOver } from '@/components/game/GameOver';
 import { FeedbackModal } from '@/components/game/FeedbackModal';
 import { questions } from '@/lib/game-data';
-import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function ImageGuesser() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -45,12 +46,14 @@ export default function ImageGuesser() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
       <Link href="/" className="absolute top-4 left-4">
-        <Button variant="ghost" className="gap-2 text-primary hover:text-primary/80">
+        <Button
+          variant="ghost"
+          className="gap-2 text-primary hover:text-primary/80">
           <ArrowLeft className="h-4 w-4" />
           Back to Games
         </Button>
       </Link>
-      
+
       {gameOver ? (
         <GameOver
           score={score}
