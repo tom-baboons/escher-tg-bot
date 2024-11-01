@@ -23,7 +23,7 @@ export function GameCard({
   onAnswer,
 }: GameCardProps) {
   return (
-    <Card className="w-full max-w-md p-6 space-y-6 bg-card/80 backdrop-blur-sm border border-primary/20 shadow-lg shadow-primary/5">
+    <Card className="w-full max-w-md p-6 space-y-6 bg-white/80 backdrop-blur-sm border border-primary/20 shadow-lg">
       <div className="flex justify-between items-center">
         <span className="text-sm font-medium text-primary">
           Question {currentQuestion + 1}/{totalQuestions}
@@ -60,8 +60,8 @@ export function GameCard({
           <Button
             key={option}
             onClick={() => onAnswer(option)}
-            variant="secondary"
-            className="h-auto py-4 hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:shadow-lg hover:shadow-primary/20"
+            variant="outline"
+            className="h-auto py-4 hover:bg-primary hover:text-primary-foreground transition-all duration-200 hover:shadow-md"
           >
             {option}
           </Button>

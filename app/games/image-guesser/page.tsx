@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useToast } from '@/components/ui/use-toast';
 import { GameCard } from '@/components/game/GameCard';
 import { GameOver } from '@/components/game/GameOver';
+import { FeedbackModal } from '@/components/game/FeedbackModal';
 import { questions } from '@/lib/game-data';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
@@ -13,26 +13,21 @@ export default function ImageGuesser() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
-  const { toast } = useToast();
+  const [showFeedback, setShowFeedback] = useState(false);
+  const [lastAnswer, setLastAnswer] = useState({ isCorrect: false, selected: '' });
 
   const handleAnswer = (answer: string) => {
     const correct = answer === questions[currentQuestion].correctAnswer;
+    setLastAnswer({ isCorrect: correct, selected: answer });
+    setShowFeedback(true);
     
     if (correct) {
       setScore(score + 1);
-      toast({
-        title: "Correct! 🎉",
-        description: `That was indeed created with ${answer}!`,
-        className: "bg-green-500 text-white",
-      });
-    } else {
-      toast({
-        title: "Not quite right",
-        description: `It was actually created with ${questions[currentQuestion].correctAnswer}`,
-        variant: "destructive",
-      });
     }
+  };
 
+  const handleContinue = () => {
+    setShowFeedback(false);
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
@@ -44,6 +39,7 @@ export default function ImageGuesser() {
     setCurrentQuestion(0);
     setScore(0);
     setGameOver(false);
+    setShowFeedback(false);
   };
 
   return (
@@ -70,6 +66,14 @@ export default function ImageGuesser() {
           onAnswer={handleAnswer}
         />
       )}
+
+      <FeedbackModal
+        isOpen={showFeedback}
+        isCorrect={lastAnswer.isCorrect}
+        correctAnswer={questions[currentQuestion]?.correctAnswer}
+        selectedAnswer={lastAnswer.selected}
+        onClose={handleContinue}
+      />
     </div>
   );
 }
