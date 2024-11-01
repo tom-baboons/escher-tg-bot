@@ -1,27 +1,29 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { GameCard } from '@/components/game/GameCard';
-import { GameOver } from '@/components/game/GameOver';
-import { FeedbackModal } from '@/components/game/FeedbackModal';
-import { questions } from '@/lib/game-data';
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import { FeedbackModal } from "@/components/game/FeedbackModal";
+import { GameCard } from "@/components/game/GameCard";
+import { GameOver } from "@/components/game/GameOver";
+import { Button } from "@/components/ui/button";
+import { questions } from "@/lib/game-data";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
 
 export default function ImageGuesser() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [lastAnswer, setLastAnswer] = useState({ isCorrect: false, selected: '' });
+  const [lastAnswer, setLastAnswer] = useState({
+    isCorrect: false,
+    selected: "",
+  });
 
   const handleAnswer = (answer: string) => {
     const correct = answer === questions[currentQuestion].correctAnswer;
     setLastAnswer({ isCorrect: correct, selected: answer });
     setShowFeedback(true);
-    
+
     if (correct) {
       setScore(score + 1);
     }
