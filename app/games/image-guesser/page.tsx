@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { useToast } from '@/components/ui/use-toast';
 import { GameCard } from '@/components/game/GameCard';
 import { GameOver } from '@/components/game/GameOver';
-import { questions } from '@/lib/game-data';
 import { Button } from '@/components/ui/button';
+import { useToast } from '@/components/ui/use-toast';
+import { questions } from '@/lib/game-data';
 import { ArrowLeft } from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 export default function ImageGuesser() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -17,19 +17,19 @@ export default function ImageGuesser() {
 
   const handleAnswer = (answer: string) => {
     const correct = answer === questions[currentQuestion].correctAnswer;
-    
+
     if (correct) {
       setScore(score + 1);
       toast({
-        title: "Correct! 🎉",
+        title: 'Correct! 🎉',
         description: `That was indeed created with ${answer}!`,
-        className: "bg-green-500 text-white",
+        className: 'bg-green-500 text-white',
       });
     } else {
       toast({
-        title: "Not quite right",
+        title: 'Not quite right',
         description: `It was actually created with ${questions[currentQuestion].correctAnswer}`,
-        variant: "destructive",
+        variant: 'destructive',
       });
     }
 
@@ -49,12 +49,14 @@ export default function ImageGuesser() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
       <Link href="/" className="absolute top-4 left-4">
-        <Button variant="ghost" className="gap-2 text-primary hover:text-primary/80">
+        <Button
+          variant="ghost"
+          className="gap-2 text-primary hover:text-primary/80">
           <ArrowLeft className="h-4 w-4" />
           Back to Games
         </Button>
       </Link>
-      
+
       {gameOver ? (
         <GameOver
           score={score}

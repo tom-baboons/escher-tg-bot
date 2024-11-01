@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @unique @default(uuid())
+  email     String   @unique
+  password  String
+  role      String   @default("Admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id                 String         @id @unique @default(uuid())
+  firstName          String
+  telegramId         String         @unique
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  credits            Int            @default(100)
+  referralCode       String?         @unique
+  referredBy   User?    @relation("UserReferrals", fields: [referredById], references: [id])
+  referredById String?
+  referrals    User[]   @relation("UserReferrals")
+  @@index([referredById])
+}
