@@ -6,6 +6,17 @@ export interface ITelegramUser {
   language_code?: string;
 }
 
+export interface User {
+  id: string,
+  firstName: string,
+  telegramId: string | number,
+  createdAt: string,
+  updatedAt: string,
+  credits: number,
+  referralCode: string,
+  referredById?: string | null,
+}
+
 export interface IWebApp {
   initData: string;
   initDataUnsafe: {

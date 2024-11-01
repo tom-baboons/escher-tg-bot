@@ -3,15 +3,21 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Sparkles } from "lucide-react";
 import { useSession } from "next-auth/react";
+import { User } from '@/types/type';
 
 export function MobileHeader() {
   const { data: session } = useSession();
-  const user = session?.user as any;
+  const user = session?.user as User;
 
   // Dummy data for when there's no user session
-  const dummyUser = {
+  const dummyUser: User = {
+    id: '123',
+    telegramId: '1234',
     firstName: "Guest",
     credits: 100,
+    referralCode: 'some_code',
+    createdAt: '',
+    updatedAt: '',
   };
 
   const displayUser = user || dummyUser;
@@ -26,11 +32,11 @@ export function MobileHeader() {
             />
             <AvatarFallback>{displayUser.firstName[0]}</AvatarFallback>
           </Avatar>
-          <span className="font-medium">{session?.user?.telegramId}</span>
+          <span className="font-medium">{displayUser?.telegramId}</span>
         </div>
         <div className="flex items-center gap-2 text-sm font-bold">
           <Sparkles className="h-4 w-4" />
-          <span>{session?.user?.credits}</span>
+          <span>{displayUser?.credits}</span>
         </div>
       </div>
     </div>
