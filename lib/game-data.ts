@@ -6,23 +6,26 @@ export type ImageQuestion = {
 
 export const questions: ImageQuestion[] = [
   {
-    imageUrl: "https://images.unsplash.com/photo-1704923095544-5e8fe53b7c5f",
+    imageUrl:
+      "https://app.escher.ai/_next/image?url=https%3A%2F%2Fringfence-prod-s3.s3.amazonaws.com%2Fimages%2Fgenerated%2F35939e96-152d-48fa-9a59-9770b89685b1.jpg&w=640&q=75",
     correctAnswer: "Midjourney",
-    options: ["DALL-E", "Midjourney", "Stable Diffusion", "Leonardo AI"]
+    options: ["DALL-E", "Midjourney", "Stable Diffusion", "Leonardo AI"],
   },
   {
-    imageUrl: "https://images.unsplash.com/photo-1705374814654-3b3315952e40",
+    imageUrl:
+      "https://app.escher.ai/_next/image?url=https%3A%2F%2Fringfence-prod-s3.s3.amazonaws.com%2Fimages%2Fgenerated%2F32fc4870-1e7d-4988-9525-b52130a1cf4b.jpg&w=828&q=75",
     correctAnswer: "DALL-E",
-    options: ["DALL-E", "Stable Diffusion", "Midjourney", "Leonardo AI"]
+    options: ["DALL-E", "Stable Diffusion", "Midjourney", "Leonardo AI"],
   },
   {
-    imageUrl: "https://images.unsplash.com/photo-1705277681866-6a58c9ad49b7",
+    imageUrl:
+      "https://app.escher.ai/_next/image?url=https%3A%2F%2Fringfence-prod-s3.s3.amazonaws.com%2Fimages%2Fgenerated%2F45a2d66c-71ef-4ab2-9427-c7420ac7da43.jpg&w=2048&q=75",
     correctAnswer: "Stable Diffusion",
-    options: ["Leonardo AI", "DALL-E", "Stable Diffusion", "Midjourney"]
+    options: ["Leonardo AI", "DALL-E", "Stable Diffusion", "Midjourney"],
   },
   {
-    imageUrl: "https://images.unsplash.com/photo-1705467705753-5f5b33e2c0ac",
+    imageUrl: "https://www.vn.nl/wp-content/uploads/2017/11/Bean.jpg",
     correctAnswer: "Leonardo AI",
-    options: ["Midjourney", "Leonardo AI", "DALL-E", "Stable Diffusion"]
-  }
+    options: ["Midjourney", "Leonardo AI", "DALL-E", "Stable Diffusion"],
+  },
 ];
