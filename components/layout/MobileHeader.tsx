@@ -11,7 +11,7 @@ export function MobileHeader() {
   // Dummy data for when there's no user session
   const dummyUser = {
     firstName: "Guest",
-    credits: 100
+    credits: 100,
   };
 
   const displayUser = user || dummyUser;
@@ -21,14 +21,16 @@ export function MobileHeader() {
       <div className="flex items-center justify-between px-4 h-16">
         <div className="flex items-center gap-3">
           <Avatar className="h-8 w-8 border border-black">
-            <AvatarImage src={`https://api.dicebear.com/7.x/initials/svg?seed=${displayUser.firstName}`} />
+            <AvatarImage
+              src={`https://api.dicebear.com/7.x/initials/svg?seed=${displayUser.firstName}`}
+            />
             <AvatarFallback>{displayUser.firstName[0]}</AvatarFallback>
           </Avatar>
-          <span className="font-medium">{displayUser.firstName}</span>
+          <span className="font-medium">{session?.user?.telegramId}</span>
         </div>
         <div className="flex items-center gap-2 text-sm font-bold">
           <Sparkles className="h-4 w-4" />
-          <span>{displayUser.credits}</span>
+          <span>{session?.user?.credits}</span>
         </div>
       </div>
     </div>
