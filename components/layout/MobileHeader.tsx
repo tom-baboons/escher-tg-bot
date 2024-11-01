@@ -6,8 +6,13 @@ import { useSession } from "next-auth/react";
 import { User } from '@/types/type';
 
 export function MobileHeader() {
+  const session1 = useSession();
   const { data: session } = useSession();
   const user = session?.user as User;
+
+  console.log('session', session)
+  console.log('session1', session1)
+
 
   // Dummy data for when there's no user session
   const dummyUser: User = {
